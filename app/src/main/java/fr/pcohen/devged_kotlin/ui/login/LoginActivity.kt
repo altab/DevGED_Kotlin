@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import fr.pcohen.devged_kotlin.R
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(), LoginActivityMvc.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
