@@ -19,7 +19,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityMvc.Listener {
         private const val TAG = "LoginActivity"
     }
 
-    private val DevGED_REQUEST_CODE: Int = 1984
+    private val REQUESTCODE: Int = 1984
     lateinit var providers: List<AuthUI.IdpConfig>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity(), LoginActivityMvc.Listener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == DevGED_REQUEST_CODE) {
+        if (requestCode == REQUESTCODE) {
             val response = IdpResponse.fromResultIntent(data)
             if (resultCode == Activity.RESULT_OK) {
                 val user = FirebaseAuth.getInstance().currentUser
@@ -66,9 +66,9 @@ class LoginActivity : AppCompatActivity(), LoginActivityMvc.Listener {
         startActivityForResult(
             AuthUI.getInstance().createSignInIntentBuilder()
                 .setAvailableProviders(providers)
-//            .setTheme(R.style.DevGED)
-//            .setTheme(R.style.AppTheme_NoActionBar)
-                .build(), DevGED_REQUEST_CODE
+                .setTheme(R.style.DevGED)
+                .setTheme(R.style.AppTheme_NoActionBar)
+                .build(), REQUESTCODE
         )
     }
 
