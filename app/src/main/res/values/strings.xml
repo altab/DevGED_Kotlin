@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">DevGED_Kotlin</string>
     <string name="title_activity_login">Login</string>
+    <string name="Logout">Logout</string>
+
+    <string name="facebook_application_id" translatable="false">436973386880936</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb436973386880936</string>
 </resources>
