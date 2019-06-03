@@ -3,24 +3,23 @@ package fr.pcohen.devged_kotlin.ui.login
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import fr.pcohen.devged_kotlin.R
-import fr.pcohen.devged_kotlin.library.extensions.toTreatFor
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.content_login.*
 import java.util.*
 
-class LoginActivity : AppCompatActivity(), LoginActivityMvc.Listener {
+class LoginActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "LoginActivity"
     }
 
-    private var mViewMvc: LoginActivityMvc? = null
     private val REQUESTCODE: Int = 1984
     lateinit var providers: List<AuthUI.IdpConfig>
 
@@ -42,16 +41,15 @@ class LoginActivity : AppCompatActivity(), LoginActivityMvc.Listener {
             buttonLogout.setOnClickListener {
                 AuthUI.getInstance().signOut(this@LoginActivity)
                     .addOnCompleteListener {
-                        //buttonLogout.isEnabled = false
-                        mViewMvc?.buttonLogoutEnabled(false)
+                        buttonLogout.isEnabled = false
                         showSignInOptions()
                     }
                     .addOnFailureListener { e ->
                         Toast.makeText(this@LoginActivity, e.message, Toast.LENGTH_SHORT).show()
                     }
             }
-        } catch (exception: Exception) {
-            exception.toTreatFor(TAG)
+        } catch (e: Exception) {
+            Log.d(TAG, e.message)
         }
     }
 
@@ -63,14 +61,13 @@ class LoginActivity : AppCompatActivity(), LoginActivityMvc.Listener {
                 if (resultCode == Activity.RESULT_OK) {
                     val user = FirebaseAuth.getInstance().currentUser
                     Toast.makeText(this, "OK, " + user?.email, Toast.LENGTH_SHORT).show()
-                    //buttonLogout.isEnabled = true
-                    mViewMvc?.buttonLogoutEnabled(true)
+                    buttonLogout.isEnabled = true
                 } else {
                     Toast.makeText(this, "KO, " + response?.error?.message, Toast.LENGTH_SHORT).show()
                 }
             }
-        } catch (exception: Exception) {
-            exception.toTreatFor(TAG)
+        } catch (e: Exception) {
+            Log.d(TAG, e.message)
         }
     }
 
@@ -83,8 +80,8 @@ class LoginActivity : AppCompatActivity(), LoginActivityMvc.Listener {
                     .setTheme(R.style.AppTheme_NoActionBar)
                     .build(), REQUESTCODE
             )
-        } catch (exception: Exception) {
-            exception.toTreatFor(TAG)
+        } catch (e: Exception) {
+            Log.d(TAG, e.message)
         }
     }
 
