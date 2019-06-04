@@ -83,6 +83,7 @@ dependencies {
     implementation "com.firebaseui:firebase-ui-auth:$rootProject.firebaseUiAuthVersion"
     implementation "com.google.firebase:firebase-core:$rootProject.firebaseCoreVersion"
 
+
     // Find the latest Facebook SDK releases here: https://goo.gl/Ce5L94
     implementation "com.facebook.android:facebook-android-sdk:$rootProject.facebookAndroidSdkVersion"
     // Find the latest Twitter SDK releases here: https://goo.gl/E5wZvQ
