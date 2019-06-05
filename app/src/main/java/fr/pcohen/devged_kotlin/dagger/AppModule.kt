@@ -10,8 +10,8 @@ class AppModule {
 
 
     @Provides
-    fun provideContext(noContestApp: DevGedApp): Context {
-        return noContestApp
+    fun provideContext(devGedApp: DevGedApp): Context {
+        return devGedApp
     }
 
 /*

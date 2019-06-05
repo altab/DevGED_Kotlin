@@ -10,8 +10,8 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import fr.pcohen.devged_kotlin.R
+import fr.pcohen.devged_kotlin.ui.search.SearchFragment
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.content_login.*
 import java.util.*
 
 class LoginActivity : AppCompatActivity() {
@@ -54,21 +54,29 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        try {
-            super.onActivityResult(requestCode, resultCode, data)
-            if (requestCode == REQUESTCODE) {
-                val response = IdpResponse.fromResultIntent(data)
-                if (resultCode == Activity.RESULT_OK) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUESTCODE) {
+            val response = IdpResponse.fromResultIntent(data)
+            if (resultCode == Activity.RESULT_OK) {
+                try {
                     val user = FirebaseAuth.getInstance().currentUser
-                    Toast.makeText(this, "OK, " + user?.email, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Bonjour, " + user?.displayName, Toast.LENGTH_SHORT).show()
                     buttonLogout.isEnabled = true
-                } else {
-                    Toast.makeText(this, "KO, " + response?.error?.message, Toast.LENGTH_SHORT).show()
+                } catch (e: Exception) {
+                    Log.d(TAG, e.message)
                 }
+
+                try {
+                    val intent = Intent(this, SearchFragment::class.java)
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    Log.d(TAG, e.message)
+                }
+            } else {
+                Toast.makeText(this, "KO, " + response?.error?.message, Toast.LENGTH_SHORT).show()
             }
-        } catch (e: Exception) {
-            Log.d(TAG, e.message)
         }
+
     }
 
     private fun showSignInOptions() {

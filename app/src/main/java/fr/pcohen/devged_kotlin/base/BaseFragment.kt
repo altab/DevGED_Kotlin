@@ -1,4 +1,4 @@
-package fr.pcohen.devged_kotlin
+package fr.pcohen.devged_kotlin.base
 
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
