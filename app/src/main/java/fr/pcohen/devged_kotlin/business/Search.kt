@@ -8,12 +8,12 @@ import java.util.*
 data class Search(
 
     @PrimaryKey(autoGenerate = true)
-    var id: Int,
+    val id: Int,
 
-    var title: String,
-    var res: String,
-    var date: Date,
-    var tags: List<String>,
-    var type: String
+    val title: String,
+    val res: String,
+    val date: Date,
+    val tags: List<String>,
+    val type: String
 
 )
