@@ -7,7 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="10dp">
 
         <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
@@ -30,29 +31,64 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textinput_tags"
+                android:id="@+id/textinput_layout_tags"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
                 android:layout_margin="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp">
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/tags_list"/>
+                    android:hint="@string/tags_list"
+                    android:id="@+id/Textinput_tags"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Spinner
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/spinner_type"
-                app:layout_constraintTop_toBottomOf="@id/textinput_tags"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textinput_layout_tags"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                android:layout_margin="10dp"
+                />
+
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:inputType="textMultiLine"
+                android:gravity="start|top"
+                android:ems="10"
+                android:hint="@string/ressource"
+                android:id="@+id/editText_ressource"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_type"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
                 android:layout_margin="10dp"/>
+
+        <Button
+                android:text="@string/fui_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_cancel"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/editText_ressource"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/colorAccent"/>
+
+        <Button
+                android:text="@string/fui_button_text_save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_save"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/editText_ressource"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/colorPrimary"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,4 +10,6 @@
     <string name="search">Search</string>
     <string name="title">Title</string>
     <string name="tags_list">Keywords separated by a comma \",\"</string>
+    <string name="url">URL</string>
+    <string name="ressource">Ressource</string>
 </resources>
