@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import fr.pcohen.devged.dao.DaoFireStore
 import fr.pcohen.devged_kotlin.base.BaseFragment
 import fr.pcohen.devged_kotlin.business.Ressource
 import fr.pcohen.devged_kotlin.business.Type
@@ -29,6 +30,8 @@ class RessourceFragment : BaseFragment() {
     private lateinit var passwordChangeViewModel: RessourceViewModel
 
     private lateinit var binding: FragmentRessourceBinding
+
+    private lateinit var daoFireStore: DaoFireStore
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -71,6 +74,9 @@ class RessourceFragment : BaseFragment() {
                 transformStringToTags(listTags.toString()),
                 type!!
             )
+            activity?.let { activity -> DaoFireStore(activity).addRes(objetRessource) }
+
+            Log.d(TAG, "Objet Construit =  " + objetRessource)
         }
 
         return binding.root

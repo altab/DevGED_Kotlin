@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "572880578419-851cn67eb4d5nuhtn057p89rlv3vduvo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.pcohen.devged_kotlin",
+            "certificate_hash": "603569b3f7aad38d1d02a976b42fea90f2b09eb7"
+          }
+        },
+        {
           "client_id": "572880578419-91cpcdbp4icivh3nm1t94acbu62affl7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
